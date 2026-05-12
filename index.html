@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIX JOKI MLBB – Carry Your Dream to Immortal</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #1a0a2e;
+    --purple-mid: #2d1b69;
+    --purple-bright: #7c3aed;
+    --purple-glow: #a855f7;
+    --purple-light: #c084fc;
+    --gold: #f59e0b;
+    --gold-light: #fcd34d;
+    --black: #05020f;
+    --white: #f8f4ff;
+    --gray: #9ca3af;
+    --green: #10b981;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(168,85,247,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(45,27,105,0.4) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* grid lines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── PARTICLES ─── */
+  .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--purple-glow);
+    opacity: 0;
+    animation: float-up linear infinite;
+  }
+
+  @keyframes float-up {
+    0%   { opacity: 0; transform: translateY(100vh) scale(0); }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+    height: 70px;
+    background: rgba(5,2,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(124,58,237,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, var(--purple-glow), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--purple-glow);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: var(--purple-light); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    padding: 0.55rem 1.5rem;
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-glow));
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(124,58,237,0.5);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    box-shadow: 0 0 35px rgba(168,85,247,0.8);
+    transform: translateY(-1px);
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 6vw;
+    padding-top: 70px;
+  }
+
+  /* animated ring */
+  .hero-ring {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(124,58,237,0.2);
+    animation: spin-ring 20s linear infinite;
+    pointer-events: none;
+  }
+  .hero-ring::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-top-color: var(--purple-glow);
+    animation: spin-ring 3s linear infinite;
+  }
+  .hero-ring:nth-child(2) { width: 800px; height: 800px; animation-duration: 30s; animation-direction: reverse; }
+  .hero-ring:nth-child(2)::before { border-top-color: var(--gold); animation-duration: 5s; }
+
+  @keyframes spin-ring {
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: fade-up 0.8s ease both;
+    position: relative;
+  }
+  .hero-tag::before, .hero-tag::after {
+    content: '───';
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #fff 0%, var(--purple-light) 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fade-up 0.8s 0.15s ease both;
+    position: relative;
+    text-shadow: none;
+    filter: drop-shadow(0 0 40px rgba(168,85,247,0.5));
+  }
+
+  .hero-slogan {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-top: 1.2rem;
+    margin-bottom: 2.5rem;
+    animation: fade-up 0.8s 0.3s ease both;
+    position: relative;
+    opacity: 0.9;
+  }
+
+  .hero-stats {
+    display: flex; gap: 3rem;
+    animation: fade-up 0.8s 0.45s ease both;
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    filter: drop-shadow(0 0 10px rgba(245,158,11,0.6));
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.3rem;
+  }
+  .stat-divider {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(124,58,237,0.5), transparent);
+    align-self: stretch;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1.2rem;
+    animation: fade-up 0.8s 0.6s ease both;
+    position: relative;
+  }
+
+  .btn-primary {
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-glow));
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none; cursor: pointer;
+    box-shadow: 0 0 30px rgba(124,58,237,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 50px rgba(168,85,247,0.9), inset 0 1px 0 rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--purple-light);
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid rgba(124,58,237,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-secondary:hover {
+    border-color: var(--purple-glow);
+    background: rgba(124,58,237,0.15);
+    box-shadow: 0 0 25px rgba(124,58,237,0.3);
+  }
+
+  /* scroll indicator */
+  .scroll-ind {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(124,58,237,0.6);
+    animation: fade-up 1s 1s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--purple-glow));
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { position: relative; z-index: 1; padding: 8rem 6vw; }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--gray);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 4rem;
+  }
+
+  .glow-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--purple-bright), var(--purple-glow));
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(124,58,237,0.7);
+  }
+
+  /* ─── KEUNGGULAN ─── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    background: rgba(26,10,46,0.6);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .feature-card:hover {
+    border-color: rgba(168,85,247,0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(124,58,237,0.2);
+  }
+  .feature-card:hover::before { opacity: 1; }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 0 10px rgba(168,85,247,0.6));
+  }
+  .feature-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.7rem;
+  }
+  .feature-desc {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ─── HARGA ─── */
+  #harga { background: rgba(26,10,46,0.3); }
+
+  .price-tabs {
+    display: flex; gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .tab-btn {
+    padding: 0.6rem 1.5rem;
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 4px;
+    color: var(--gray);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: rgba(124,58,237,0.3);
+    border-color: var(--purple-glow);
+    color: var(--purple-light);
+    box-shadow: 0 0 15px rgba(124,58,237,0.3);
+  }
+
+  .price-panel { display: none; }
+  .price-panel.active { display: block; }
+
+  .price-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    padding: 0.6rem 1rem;
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .price-card {
+    background: rgba(13,5,30,0.8);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--purple-bright), var(--purple-glow));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .price-card:hover {
+    border-color: rgba(168,85,247,0.4);
+    box-shadow: 0 8px 30px rgba(124,58,237,0.2);
+    transform: translateX(4px);
+  }
+  .price-card:hover::after { opacity: 1; }
+
+  .price-route {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .price-amount {
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+    filter: drop-shadow(0 0 6px rgba(245,158,11,0.5));
+  }
+
+  /* ─── CARA ORDER ─── */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+    max-width: 700px;
+  }
+
+  .step {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .step-num {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-bright), var(--purple-glow));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(124,58,237,0.5);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .step-line {
+    width: 1px;
+    flex: 1;
+    min-height: 40px;
+    background: linear-gradient(to bottom, var(--purple-glow), transparent);
+    margin: 4px 0;
+  }
+  .step-content {
+    padding: 0.3rem 0 2.5rem;
+  }
+  .step-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ─── ORDER FORM ─── */
+  #order-sekarang {
+    background: rgba(13,5,30,0.8);
+    border-top: 1px solid rgba(124,58,237,0.2);
+    border-bottom: 1px solid rgba(124,58,237,0.2);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    max-width: 900px;
+  }
+  .form-full { grid-column: 1 / -1; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+  }
+  .form-input, .form-select, .form-textarea {
+    background: rgba(26,10,46,0.8);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--purple-glow);
+    box-shadow: 0 0 15px rgba(124,58,237,0.25);
+  }
+  .form-select option { background: #1a0a2e; }
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  /* sub-select for packages */
+  .sub-options {
+    display: none;
+  }
+  .sub-options.visible { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.1rem 3rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(37,211,102,0.4);
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  .form-submit:hover {
+    box-shadow: 0 0 50px rgba(37,211,102,0.7);
+    transform: translateY(-2px);
+  }
+
+  /* ─── PAYMENT ─── */
+  .payment-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .payment-card {
+    background: rgba(26,10,46,0.6);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .payment-card:hover {
+    border-color: var(--purple-glow);
+    box-shadow: 0 0 25px rgba(124,58,237,0.25);
+    transform: translateY(-4px);
+  }
+  .payment-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+  .payment-logo.gopay { color: #00aae4; }
+  .payment-logo.bca { color: #0066b0; }
+  .payment-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+  .payment-name { font-size: 0.85rem; color: var(--gray); margin-top: 0.4rem; }
+
+  /* ─── KONTAK ─── */
+  .contact-row {
+    display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem;
+  }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 2rem;
+    background: rgba(26,10,46,0.6);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+    min-width: 240px;
+  }
+  .contact-card:hover {
+    border-color: var(--purple-glow);
+    box-shadow: 0 0 25px rgba(124,58,237,0.3);
+    transform: translateY(-3px);
+  }
+  .contact-icon { font-size: 2rem; }
+  .contact-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gray);
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+  .contact-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--purple-light);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 3rem 6vw;
+    border-top: 1px solid rgba(124,58,237,0.15);
+  }
+  footer .footer-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--purple-glow), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+  }
+  footer p { font-size: 0.85rem; color: var(--gray); letter-spacing: 0.1em; }
+
+  /* ─── GLOW DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--purple-bright), var(--purple-glow), transparent);
+    opacity: 0.4;
+    margin: 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .hero-buttons { flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-full { grid-column: 1; }
+    .hero-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">FIX JOKI MLBB</div>
+  <ul class="nav-links">
+    <li><a href="#harga">Harga</a></li>
+    <li><a href="#cara-order">Cara Order</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+  <a href="#order-sekarang" class="nav-cta">Order Sekarang</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <span class="hero-tag">Mobile Legends Bang Bang</span>
+  <h1 class="hero-title">FIX JOKI<br>MLBB</h1>
+  <p class="hero-slogan">"Carry Your Dream to Immortal"</p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Tahun Pengalaman</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">223+</div>
+      <div class="stat-label">Total Orderan</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Trusted & Aman</div>
+    </div>
+  </div>
+
+  <div class="hero-buttons">
+    <a href="#order-sekarang" class="btn-primary">Order Sekarang</a>
+    <a href="#harga" class="btn-secondary">Lihat Harga</a>
+  </div>
+
+  <div class="scroll-ind">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan">
+  <span class="section-tag">// Kenapa Pilih Kami</span>
+  <h2 class="section-title">Joki Rank MLBB<br>Terpercaya</h2>
+  <div class="glow-line"></div>
+  <p class="section-subtitle">Lebih dari 3 tahun pengalaman dengan ratusan orderan sukses. Kami hadir untuk carry akun kamu ke rank impian.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Proses Cepat</div>
+      <div class="feature-desc">Joki profesional siap mengerjakan pesanan kamu dengan cepat, efisien, dan tepat waktu.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-title">100% Aman</div>
+      <div class="feature-desc">Privasi akun kamu terjaga dengan baik. Kami menjaga kepercayaan klien sebagai prioritas utama.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <div class="feature-title">Joki Berpengalaman</div>
+      <div class="feature-desc">Tim joki kami adalah pemain ranked tinggi dengan pengalaman lebih dari 3 tahun dan 223+ orderan sukses.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title">Komunikasi Aktif</div>
+      <div class="feature-desc">Update progress secara real-time via WhatsApp. Kami siap menjawab pertanyaan kamu kapan saja.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">Hero Request</div>
+      <div class="feature-desc">Bebas request minimal 3 hero favorit kamu. Joki kami akan menggunakan hero pilihanmu.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💎</div>
+      <div class="feature-title">Harga Terjangkau</div>
+      <div class="feature-desc">Harga kompetitif mulai dari Rp 3.000/bintang. Bonus 1 bintang gratis setiap order 10 bintang!</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HARGA -->
+<section id="harga">
+  <span class="section-tag">// Daftar Paket</span>
+  <h2 class="section-title">Harga Layanan</h2>
+  <div class="glow-line"></div>
+
+  <div class="price-tabs">
+    <button class="tab-btn active" onclick="showTab('rank-package')">Joki Rank Package</button>
+    <button class="tab-btn" onclick="showTab('perbintang')">Joki Perbintang</button>
+    <button class="tab-btn" onclick="showTab('epic-package')">Epic Package</button>
+    <button class="tab-btn" onclick="showTab('legend-package')">Legend Package</button>
+    <button class="tab-btn" onclick="showTab('mythical-package')">Mythical Package</button>
+  </div>
+
+  <!-- Rank Package -->
+  <div class="price-panel active" id="tab-rank-package">
+    <div class="price-grid">
+      <div class="price-card"><span class="price-route">Grandmaster V → Epic V</span><span class="price-amount">Rp 70.000</span></div>
+      <div class="price-card"><span class="price-route">Epic V → Legend V</span><span class="price-amount">Rp 90.000</span></div>
+      <div class="price-card"><span class="price-route">Legend V → Mythic</span><span class="price-amount">Rp 140.000</span></div>
+      <div class="price-card"><span class="price-route">Mythic → Mythical Honor</span><span class="price-amount">Rp 245.000</span></div>
+      <div class="price-card"><span class="price-route">Mythical Honor → Mythical Glory</span><span class="price-amount">Rp 290.000</span></div>
+      <div class="price-card"><span class="price-route">Mythical Glory → Mythical Immortal</span><span class="price-amount">Rp 880.000</span></div>
+    </div>
+  </div>
+
+  <!-- Perbintang -->
+  <div class="price-panel" id="tab-perbintang">
+    <div class="price-note">🎁 Order 10 bintang, GRATIS 1 bintang!</div>
+    <div class="price-grid">
+      <div class="price-card"><span class="price-route">Grandmaster</span><span class="price-amount">Rp 3.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Epic</span><span class="price-amount">Rp 4.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Legend</span><span class="price-amount">Rp 6.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Mythic</span><span class="price-amount">Rp 10.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Mythical Honor</span><span class="price-amount">Rp 12.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Mythical Glory</span><span class="price-amount">Rp 18.000/⭐</span></div>
+      <div class="price-card"><span class="price-route">Mythical Immortal</span><span class="price-amount">Rp 23.000/⭐</span></div>
+    </div>
+  </div>
+
+  <!-- Epic Package -->
+  <div class="price-panel" id="tab-epic-package">
+    <div class="price-grid">
+      <div class="price-card"><span class="price-route">Epic V → Mythic</span><span class="price-amount">Rp 225.000</span></div>
+      <div class="price-card"><span class="price-route">Epic V → Mythical Honor</span><span class="price-amount">Rp 470.000</span></div>
+      <div class="price-card"><span class="price-route">Epic V → Mythical Glory</span><span class="price-amount">Rp 760.000</span></div>
+      <div class="price-card"><span class="price-route">Epic V → Mythical Immortal</span><span class="price-amount">Rp 1.640.000</span></div>
+    </div>
+  </div>
+
+  <!-- Legend Package -->
+  <div class="price-panel" id="tab-legend-package">
+    <div class="price-grid">
+      <div class="price-card"><span class="price-route">Legend V → Mythical Honor</span><span class="price-amount">Rp 380.000</span></div>
+      <div class="price-card"><span class="price-route">Legend V → Mythical Glory</span><span class="price-amount">Rp 670.000</span></div>
+      <div class="price-card"><span class="price-route">Legend V → Mythical Immortal</span><span class="price-amount">Rp 1.550.000</span></div>
+    </div>
+  </div>
+
+  <!-- Mythical Package -->
+  <div class="price-panel" id="tab-mythical-package">
+    <div class="price-grid">
+      <div class="price-card"><span class="price-route">Mythic → Mythical Glory</span><span class="price-amount">Rp 530.000</span></div>
+      <div class="price-card"><span class="price-route">Mythic → Mythical Immortal 100</span><span class="price-amount">Rp 1.410.000</span></div>
+      <div class="price-card"><span class="price-route">Mythic → Mythical Immortal 150</span><span class="price-amount">Rp 2.310.000</span></div>
+      <div class="price-card"><span class="price-route">Mythic → Mythical Immortal 200</span><span class="price-amount">Rp 3.210.000</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CARA ORDER -->
+<section id="cara-order">
+  <span class="section-tag">// Panduan Pemesanan</span>
+  <h2 class="section-title">Cara Order</h2>
+  <div class="glow-line"></div>
+
+  <div class="steps-container">
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Pilih Paket</div>
+        <div class="step-desc">Cek daftar harga & pilih paket yang sesuai dengan rank dan target rank kamu. Ada 5 jenis layanan yang bisa dipilih.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Isi Form Order</div>
+        <div class="step-desc">Lengkapi form pemesanan di bawah dengan data akun MLBB kamu. Data kamu aman dan terjaga kerahasiaannya.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">03</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Kirim via WhatsApp</div>
+        <div class="step-desc">Form akan otomatis dikirim ke WhatsApp kami. Konfirmasi order dan lakukan pembayaran (GoPay / Transfer BCA).</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">04</div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Proses Joki Dimulai</div>
+        <div class="step-desc">Setelah pembayaran dikonfirmasi, joki kami langsung bekerja. Kamu bisa pantau progress kapan saja!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ORDER FORM -->
+<section id="order-sekarang">
+  <span class="section-tag">// Form Pemesanan</span>
+  <h2 class="section-title">Order Sekarang</h2>
+  <div class="glow-line"></div>
+  <p class="section-subtitle">Isi form di bawah dan kamu akan langsung diarahkan ke WhatsApp kami secara otomatis.</p>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label class="form-label">Nama</label>
+      <input class="form-input" type="text" id="nama" placeholder="Nama kamu" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Nomor HP</label>
+      <input class="form-input" type="text" id="nohp" placeholder="08xxxxxxxxxx" />
+    </div>
+
+    <div class="form-group form-full">
+      <label class="form-label">Jenis Layanan</label>
+      <select class="form-select" id="jenis-layanan" onchange="updatePackages()">
+        <option value="">-- Pilih Jenis Layanan --</option>
+        <option value="Joki Rank Package">Joki Rank Package</option>
+        <option value="Joki Rank Perbintang">Joki Rank Perbintang</option>
+        <option value="Epic Package">Epic Package</option>
+        <option value="Legend Package">Legend Package</option>
+        <option value="Mythical Package">Mythical Package</option>
+      </select>
+    </div>
+
+    <div class="form-group form-full sub-options" id="sub-packages">
+      <label class="form-label">Pilih Package</label>
+      <select class="form-select" id="jenis-package"></select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Login Via</label>
+      <select class="form-select" id="login-via">
+        <option value="Moonton">Moonton</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Google">Google</option>
+        <option value="VK">VK</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">User ID</label>
+      <input class="form-input" type="text" id="userid" placeholder="User ID MLBB" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Nick Name</label>
+      <input class="form-input" type="text" id="nickname" placeholder="Nick name akun" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email / Moonton ID</label>
+      <input class="form-input" type="text" id="email" placeholder="Email atau Moonton ID" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input class="form-input" type="password" id="password" placeholder="Password akun" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Request Hero (min 3)</label>
+      <input class="form-input" type="text" id="hero" placeholder="cth: Ling, Fanny, Lancelot" />
+    </div>
+
+    <div class="form-group form-full">
+      <label class="form-label">Catatan untuk Penjoki</label>
+      <textarea class="form-textarea" id="catatan" placeholder="Catatan tambahan (opsional)..."></textarea>
+    </div>
+  </div>
+
+  <button class="form-submit" onclick="submitOrder()">
+    <span>📲</span> Kirim via WhatsApp
+  </button>
+
+  <!-- PAYMENT -->
+  <div style="margin-top:5rem;">
+    <span class="section-tag">// Metode Pembayaran</span>
+    <h3 class="section-title" style="font-size:1.6rem;">Metode Bayar</h3>
+    <div class="glow-line"></div>
+    <div class="payment-cards">
+      <div class="payment-card">
+        <div class="payment-logo gopay">GOPAY</div>
+        <div class="payment-number">0896-8172-2000</div>
+        <div class="payment-name">Fix Joki MLBB</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-logo bca">BCA Transfer</div>
+        <div class="payment-number">7060171691</div>
+        <div class="payment-name">Fix Joki MLBB</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <span class="section-tag">// Hubungi Kami</span>
+  <h2 class="section-title">Kontak</h2>
+  <div class="glow-line"></div>
+  <p class="section-subtitle">Ada pertanyaan? Langsung hubungi kami via WhatsApp atau follow Instagram kami.</p>
+
+  <div class="contact-row">
+    <a href="https://wa.me/6289681722000" target="_blank" class="contact-card">
+      <div class="contact-icon">📲</div>
+      <div>
+        <div class="contact-label">WhatsApp</div>
+        <div class="contact-value">+62 896-8172-2000</div>
+      </div>
+    </a>
+    <a href="https://www.instagram.com/fixjokimlbb/" target="_blank" class="contact-card">
+      <div class="contact-icon">📸</div>
+      <div>
+        <div class="contact-label">Instagram</div>
+        <div class="contact-value">@fixjokimlbb</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FIX JOKI MLBB</div>
+  <p style="color: var(--purple-light); margin-bottom: 0.3rem; letter-spacing: 0.2em; font-style: italic;">"Carry Your Dream to Immortal"</p>
+  <p style="margin-top:0.8rem;">© 2024 Fix Joki MLBB · Semua hak dilindungi</p>
+</footer>
+
+<script>
+  // ─── Particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 1;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // ─── Tabs
+  function showTab(id) {
+    document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ─── Dynamic packages
+  const packages = {
+    'Joki Rank Package': [
+      'Grandmaster V – Epic V (Rp 70.000)',
+      'Epic V – Legend V (Rp 90.000)',
+      'Legend V – Mythic (Rp 140.000)',
+      'Mythic – Mythical Honor (Rp 245.000)',
+      'Mythical Honor – Mythical Glory (Rp 290.000)',
+      'Mythical Glory – Mythical Immortal (Rp 880.000)',
+    ],
+    'Joki Rank Perbintang': [
+      'Grandmaster (Rp 3.000/bintang)',
+      'Epic (Rp 4.000/bintang)',
+      'Legend (Rp 6.000/bintang)',
+      'Mythic (Rp 10.000/bintang)',
+      'Mythical Honor (Rp 12.000/bintang)',
+      'Mythical Glory (Rp 18.000/bintang)',
+      'Mythical Immortal (Rp 23.000/bintang)',
+    ],
+    'Epic Package': [
+      'Epic V – Mythic (Rp 225.000)',
+      'Epic V – Mythical Honor (Rp 470.000)',
+      'Epic V – Mythical Glory (Rp 760.000)',
+      'Epic V – Mythical Immortal (Rp 1.640.000)',
+    ],
+    'Legend Package': [
+      'Legend V – Mythical Honor (Rp 380.000)',
+      'Legend V – Mythical Glory (Rp 670.000)',
+      'Legend V – Mythical Immortal (Rp 1.550.000)',
+    ],
+    'Mythical Package': [
+      'Mythic – Mythical Glory (Rp 530.000)',
+      'Mythic – Mythical Immortal 100 (Rp 1.410.000)',
+      'Mythic – Mythical Immortal 150 (Rp 2.310.000)',
+      'Mythic – Mythical Immortal 200 (Rp 3.210.000)',
+    ],
+  };
+
+  function updatePackages() {
+    const layanan = document.getElementById('jenis-layanan').value;
+    const subEl = document.getElementById('sub-packages');
+    const pkgEl = document.getElementById('jenis-package');
+    if (!layanan) { subEl.classList.remove('visible'); return; }
+    pkgEl.innerHTML = '<option value="">-- Pilih Package --</option>';
+    (packages[layanan] || []).forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p; opt.textContent = p;
+      pkgEl.appendChild(opt);
+    });
+    subEl.classList.add('visible');
+  }
+
+  // ─── Submit to WA
+  function submitOrder() {
+    const g = id => document.getElementById(id).value.trim();
+    const nama = g('nama'), nohp = g('nohp'), layanan = g('jenis-layanan'),
+          pkg = g('jenis-package'), login = g('login-via'), uid = g('userid'),
+          nick = g('nickname'), email = g('email'), pass = g('password'),
+          hero = g('hero'), catatan = g('catatan');
+
+    if (!nama || !layanan || !uid) {
+      alert('Harap isi minimal: Nama, Jenis Layanan, dan User ID!');
+      return;
+    }
+
+    const msg = `*ORDER JOKI MLBB – FIX JOKI MLBB*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Nama:* ${nama}
+📱 *No. HP:* ${nohp || '-'}
+
+🎮 *Jenis Layanan:* ${layanan}
+📦 *Paket:* ${pkg || '-'}
+
+🔑 *Login Via:* ${login}
+🆔 *User ID:* ${uid}
+📛 *Nick Name:* ${nick || '-'}
+📧 *Email/Moonton ID:* ${email || '-'}
+🔒 *Password:* ${pass || '-'}
+
+🦸 *Request Hero:* ${hero || '-'}
+📝 *Catatan:* ${catatan || '-'}
+━━━━━━━━━━━━━━━━━━━━
+_Dikirim via fixjokimlbb.com_`;
+
+    const url = `https://wa.me/6289681722000?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>
